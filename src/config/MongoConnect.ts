@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config();
 export class MongoDB {
   async connect() {
     try {
@@ -17,7 +15,8 @@ export class MongoDB {
       mongoose.set("strictQuery", false);
       await mongoose.connect(uri, {
         dbName: process.env.MONGO_DATABASE,
-      });      console.log("Conectado ao banco de dados com sucesso!");
+      });
+      console.log("Conectado ao banco de dados com sucesso!");
     } catch (error) {
       throw new Error("Ocorreu um problema ao iniciar a conexão com o banco de dados");
     }

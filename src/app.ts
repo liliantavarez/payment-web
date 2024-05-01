@@ -1,8 +1,6 @@
-import dotenv from "dotenv";
 import express from "express";
-import { router } from "./config/routes.js";
+import { router } from "./modules/payment/routes/router.js";
 
-dotenv.config();
 export class App {
   private express: express.Express;
   private port?: string;
