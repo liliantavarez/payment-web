@@ -1,17 +1,20 @@
 import { PaymentDTO } from "../../payment/dtos/PaymentDTO";
+import { parse } from "date-fns";
 
 export function validarPagamento(payment: PaymentDTO): string | null {
   const cardDigits = payment.cardNumber.replace(/\s/g, "");
-  if (/^(\d)\1+$/.test(cardDigits)) {
+
+  if (/(\d)\1{3}/.test(cardDigits)) {
     return "Pagamento recusado";
   }
 
-  const today = new Date();
-  const currentMonth = today.getMonth() + 1;
-  const currentYear = today.getFullYear();
-  const [expMonth, expYear] = payment.expiration.split("/").map(Number);
+  if (/(012|123|234|345|456|567|678|789|890)/.test(cardDigits)) {
+    return "Pagamento recusado"; 
+  }
 
-  if (expYear < currentYear || (expYear === currentYear && expMonth < currentMonth)) {
+  const expirationDate = parse(payment.expiration, "MM/yy", new Date());
+
+  if (expirationDate < new Date()) {
     return "Cartão expirado ou data de expiração inválida";
   }
 

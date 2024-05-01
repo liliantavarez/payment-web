@@ -1,4 +1,3 @@
-// paymentRequestValidator.ts
 import { body } from "express-validator";
 import { isValid, parse, getYear } from "date-fns";
 
@@ -13,8 +12,8 @@ export const paymentRequestValidator = () => {
       .trim()
       .isNumeric()
       .withMessage("Deve conter apenas números")
-      .isLength({ min: 16, max: 16 })
-      .withMessage("O número do cartão deve ter exatamente 16 caracteres"),
+      .isLength({ min: 15, max: 16 })
+      .withMessage("Numero de cartão invalido"),
 
     body("expiration")
       .trim()
@@ -40,6 +39,7 @@ export const paymentRequestValidator = () => {
     body("cvc")
       .trim()
       .isNumeric()
+      .withMessage("CVC deve conter apenas números")
       .isLength({ min: 3, max: 3 })
       .withMessage("O CVC deve ter exatamente 3 caracteres numéricos"),
   ];

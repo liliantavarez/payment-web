@@ -7,7 +7,7 @@
   "scripts": {
     "test": "node --experimental-vm-modules --no-warnings node_modules/jest/bin/jest --runInBand ",
     "build": "tsc -p ./tsconfig.json",
-    "start": "ts-node dist/src/index.js",
+    "start": "ts-node src/index.ts",
     "dev": "nodemon src/index.ts",
     "prettier:check": "npx prettier -c ./**/*.ts",
     "prettier:write": "npx prettier -w ./**/*.ts"
