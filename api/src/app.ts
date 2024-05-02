@@ -1,5 +1,6 @@
-import express from "express";
 import { router } from "./modules/payment/routes/router.js";
+import cors from "cors";
+import express from "express";
 
 export class App {
   private express: express.Express;
@@ -18,7 +19,7 @@ export class App {
   }
 
   private setVariables() {
-    this.port = process.env.PORT ?? "3000";
+    this.port = process.env.PORT ?? "3001";
     this.environment = process.env.NODE_ENV ?? "development";
     this.express.set("port", this.port);
     this.express.set("env", this.environment);
@@ -26,6 +27,7 @@ export class App {
 
   private middlewares() {
     this.express.use(express.json());
+    this.express.use(cors());
   }
 
   private routes() {
