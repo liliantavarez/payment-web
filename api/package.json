@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "api-payment-web",
+  "name": "payment-web-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
