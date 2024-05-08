@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { PaymentMongoRepository } from "../repositories/mongoRepositories/CategoryMongoRepository.js";
+import { PaymentMongoRepository } from "../repositories/mongoRepositories/PaymentMongoRepository.js";
 import { PaymentService } from "../services/PaymentService.js";
 import { createdResponse, serverErrorResponse } from "../../shared/utils/appResponses.js";
 import { validarPagamento } from "../../shared/utils/paymentValidation.js";
@@ -9,11 +9,11 @@ class PaymentController {
     try {
       const body = req.body;
       const validationError = validarPagamento(body);
-      
+
       if (validationError) {
         return serverErrorResponse(res, new Error(validationError));
       }
-      
+
       const paymentRepository = new PaymentMongoRepository();
       const paymentService = new PaymentService(paymentRepository);
 

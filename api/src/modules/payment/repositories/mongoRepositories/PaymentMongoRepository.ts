@@ -1,4 +1,4 @@
-import { PaymentEntity } from "./../../entities/PaymentEntity.js";
+import { PaymentEntity } from "../../entities/PaymentEntity.js";
 import { PaymentModel } from "../../../../models/PaymentModel.js";
 import { PaymentRepository } from "../PaymentRepository.js";
 export class PaymentMongoRepository implements PaymentRepository {
